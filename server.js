@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
+const port = process.env.PORT || 3001;
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://danielwzr:mongodbteste@studyjs.1t8jyxe.mongodb.net/?retryWrites=true&w=majority";
 
@@ -16,7 +17,7 @@ MongoClient.connect(uri, (err, client) => {
     if (err) return console.log(err);
     db = client.db('studyjs');
 
-    app.listen(3000, () => {
+    app.listen(port, () => {
         console.log('Server xd')
     })
 
