@@ -2,8 +2,8 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3001;
+require('dotenv/config');
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://danielwzr:mongodbteste@studyjs.1t8jyxe.mongodb.net/?retryWrites=true&w=majority";
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
@@ -13,12 +13,12 @@ app.get('/', (req, res) => {
 })
 
 
-MongoClient.connect(uri, (err, client) => {
+MongoClient.connect(process.env.DB_URI, (err, client) => {
     if (err) return console.log(err);
     db = client.db('studyjs');
 
     app.listen(port, () => {
-        console.log('Server xd')
+        console.log('Server on')
     })
 
     app.post('/', (req, res) => {
