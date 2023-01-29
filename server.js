@@ -12,6 +12,12 @@ app.get('/', (req, res) => {
     res.render('index.ejs')
 })
 
+app.get('/cursos', (req, res) => {
+    db.collection('cursos').find().toArray((err,docs)=>{
+        if (err) return console.log(err);
+        res.send(docs)
+    })
+})
 
 MongoClient.connect(process.env.DB_URI, (err, client) => {
     if (err) return console.log(err);
