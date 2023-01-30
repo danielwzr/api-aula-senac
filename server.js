@@ -4,8 +4,11 @@ const app = express();
 const port = process.env.PORT || 3001;
 require('dotenv/config');
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const cors = require('cors');
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
